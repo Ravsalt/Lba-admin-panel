@@ -1,12 +1,67 @@
 "use client"
 
 import { Card } from "@/components/ui/card"
-import { useState } from "react"
-import { useData } from "@/lib/data-context"
+import { useState, useEffect } from "react"
+import { supabase } from "@/lib/supabase"
+import Image from "next/image"
+
+interface Event {
+  id: string
+  icon: string
+  name: string
+  description: string
+  image_url: string | null
+  created_at: string
+}
 
 export function EventsSection() {
   const [hoveredId, setHoveredId] = useState<string | null>(null)
-  const { events } = useData()
+  const [events, setEvents] = useState<Event[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    async function fetchEvents() {
+      try {
+        const { data, error } = await supabase
+          .from('events')
+          .select('*')
+          .order('created_at', { ascending: false })
+
+        if (error) {
+          console.error('Error fetching events:', error)
+          return
+        }
+
+        setEvents(data || [])
+      } catch (error) {
+        console.error('Error:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchEvents()
+  }, [])
+
+  if (loading) {
+    return (
+      <section id="events" className="py-20 px-4 bg-background">
+        <div className="max-w-7xl mx-auto text-center">
+          <p className="text-foreground/60">Loading events...</p>
+        </div>
+      </section>
+    )
+  }
+
+  if (events.length === 0) {
+    return (
+      <section id="events" className="py-20 px-4 bg-background">
+        <div className="max-w-7xl mx-auto text-center">
+          <p className="text-foreground/60">No events available yet.</p>
+        </div>
+      </section>
+    )
+  }
 
   return (
     <section id="events" className="py-20 px-4 bg-background">
@@ -26,6 +81,16 @@ export function EventsSection() {
               onMouseEnter={() => setHoveredId(event.id)}
               onMouseLeave={() => setHoveredId(null)}
             >
+              {event.image_url && (
+                <div className="relative w-full h-48 mb-4 rounded-lg overflow-hidden">
+                  <Image
+                    src={event.image_url}
+                    alt={event.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              )}
               <div className="text-4xl mb-4">{event.icon}</div>
               <h3 className="text-xl font-bold mb-3 text-foreground">{event.name}</h3>
               <p className="text-foreground/70 leading-relaxed">{event.description}</p>

@@ -62,7 +62,7 @@ export default function AdminLogin() {
     <div className="min-h-screen bg-background flex items-center justify-center px-4">
       <Card className="w-full max-w-md p-8 bg-card border-border">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-accent mb-2">🇬🇧</h1>
+          <h1 className="text-4xl font-bold text-accent mb-2">★</h1>
           <h2 className="text-2xl font-bold">Admin Panel</h2>
           <p className="text-foreground/60 mt-2">Leezardas's British Army</p>
         </div>

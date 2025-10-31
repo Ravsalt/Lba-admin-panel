@@ -14,7 +14,7 @@ export function AdminSidebar({ currentPage, onPageChange }: AdminSidebarProps) {
   const router = useRouter()
 
   const handleLogout = () => {
-    localStorage.removeItem("adminToken")
+    sessionStorage.removeItem("adminSession")
     router.push("/admin")
   }
 

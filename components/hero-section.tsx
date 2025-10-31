@@ -84,12 +84,10 @@ export function HeroSection() {
       {/* Content container */}
       <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
         <div className="mb-8 animate-fade-in">
-          <span className="text-6xl md:text-7xl inline-block mb-4 drop-shadow-xl">{currentSlide.icon}</span>
         </div>
 
         {/* Enhanced title with better readability */}
         <h1 className="text-5xl md:text-7xl font-bold mb-4 text-balance text-white drop-shadow-lg">
-          <span className="inline-block mr-3">🇬🇧</span>
           {currentSlide.title}
         </h1>
 
