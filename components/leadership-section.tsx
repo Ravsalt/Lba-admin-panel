@@ -1,7 +1,8 @@
 "use client"
 
+import React, { useEffect, useState } from 'react'
 import { Card } from "@/components/ui/card"
-import { useData } from "@/lib/data-context"
+import { supabase } from "@/lib/supabase"
 
 interface MemberCardProps {
   name: string
@@ -19,8 +20,39 @@ function MemberCard({ name, title, emoji }: MemberCardProps) {
   )
 }
 
+interface TeamMember {
+  id: string
+  name: string
+  title: string
+  emoji: string
+  created_at: string
+}
+
 export function LeadershipSection() {
-  const { team } = useData()
+  const [team, setTeam] = useState<TeamMember[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    const fetchTeam = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('team')
+          .select('*')
+          .order('created_at', { ascending: false })
+
+        if (error) throw error
+        if (data) setTeam(data)
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'An error occurred')
+        console.error('Error fetching team:', err)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchTeam()
+  }, [])
 
   // Categorize team members by role
   const supremeCommander = team.filter((m) => m.title.includes("Supreme"))

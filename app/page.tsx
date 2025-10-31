@@ -6,7 +6,6 @@ import { HeroSection } from "@/components/hero-section"
 import { EventsSection } from "@/components/events-section"
 import { GallerySection } from "@/components/gallery-section"
 import { LeadershipSection } from "@/components/leadership-section"
-import { DevelopmentTeamSection } from "@/components/development-team-section"
 import { Footer } from "@/components/footer"
 
 export default function Home() {
@@ -28,7 +27,6 @@ export default function Home() {
       <EventsSection />
       <GallerySection />
       <LeadershipSection />
-      <DevelopmentTeamSection />
       <Footer />
     </div>
   )
