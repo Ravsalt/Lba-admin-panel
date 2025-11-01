@@ -43,13 +43,25 @@ export function Navigation({ scrolled }: NavigationProps) {
 
         {/* Desktop Buttons */}
         <div className="hidden md:flex items-center gap-4">
-          <Button
-            variant="outline"
-            className="border-accent text-accent hover:bg-accent hover:text-accent-foreground bg-transparent"
+          <a
+            href="https://discord.gg/jHMsmaQRMG"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            💬 Join Discord
-          </Button>
-          <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">🎮 Join LBA</Button>
+            <Button
+              variant="outline"
+              className="border-accent text-accent hover:bg-accent hover:text-accent-foreground bg-transparent"
+            >
+              💬 Join Discord
+            </Button>
+          </a>
+          <a
+            href="https://www.roblox.com/communities/35816550/LBA-Leezardass-British-Army#!/about"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">🎮 Join LBA</Button>
+          </a>
         </div>
 
         {/* Mobile Menu Button */}
@@ -74,10 +86,22 @@ export function Navigation({ scrolled }: NavigationProps) {
             Team
           </Link>
           <div className="flex flex-col gap-2 pt-2">
-            <Button variant="outline" className="w-full border-accent text-accent bg-transparent">
-              💬 Join Discord
-            </Button>
-            <Button className="w-full bg-primary">🎮 Join LBA</Button>
+            <a
+              href="https://discord.gg/jHMsmaQRMG"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button variant="outline" className="w-full border-accent text-accent bg-transparent">
+                💬 Join Discord
+              </Button>
+            </a>
+            <a
+              href="https://www.roblox.com/communities/35816550/LBA-Leezardass-British-Army#!/about"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button className="w-full bg-primary">🎮 Join LBA</Button>
+            </a>
           </div>
         </div>
       )}

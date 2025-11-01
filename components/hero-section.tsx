@@ -98,19 +98,31 @@ export function HeroSection() {
 
         {/* CTA Buttons with improved styling */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-          <Button
-            size="lg"
-            className="bg-accent hover:bg-accent/90 text-accent-foreground px-8 font-semibold transition-all hover:scale-105"
+          <a
+            href="https://discord.gg/jHMsmaQRMG"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            💬 Join Discord
-          </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            className="border-white/80 text-white hover:bg-white/10 px-8 bg-white/5 font-semibold transition-all hover:scale-105 backdrop-blur-sm"
+            <Button
+              size="lg"
+              className="bg-accent hover:bg-accent/90 text-accent-foreground px-8 font-semibold transition-all hover:scale-105"
+            >
+              💬 Join Discord
+            </Button>
+          </a>
+          <a
+            href="https://www.roblox.com/communities/35816550/LBA-Leezardass-British-Army#!/about"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            🎮 Join LBA
-          </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-white/80 text-white hover:bg-white/10 px-8 bg-white/5 font-semibold transition-all hover:scale-105 backdrop-blur-sm"
+            >
+              🎮 Join LBA
+            </Button>
+          </a>
         </div>
 
         {/* Slide indicators with improved styling */}
