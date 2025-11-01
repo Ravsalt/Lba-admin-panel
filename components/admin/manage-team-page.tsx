@@ -201,14 +201,7 @@ export function ManageTeamPage() {
     fetchTeam()
   }, [supabase])
 
-  // Categorize for display
-  const getRankBadge = (title: string) => {
-    const lower = title.toLowerCase()
-    if (lower.includes("supreme")) return { label: "Supreme", color: "bg-yellow-500/20 text-yellow-500 border-yellow-500/50" }
-    if (lower.includes("top")) return { label: "Top Cmd", color: "bg-purple-500/20 text-purple-500 border-purple-500/50" }
-    if (lower.includes("wing")) return { label: "Wing Cmd", color: "bg-blue-500/20 text-blue-500 border-blue-500/50" }
-    return { label: "Officer", color: "bg-accent/20 text-accent border-accent/50" }
-  }
+
 
   return (
     <div className="max-w-6xl mx-auto">
@@ -332,7 +325,6 @@ export function ManageTeamPage() {
         <div className="space-y-4">
           {team.map((member) => {
             const isEditing = editingId === member.id
-            const rank = getRankBadge(member.title)
             
             return (
               <Card key={member.id} className="p-6 bg-card border-border hover:border-accent/50 transition-all">
@@ -409,9 +401,6 @@ export function ManageTeamPage() {
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 flex-wrap mb-1">
                           <h3 className="font-bold text-lg">{member.name}</h3>
-                          <span className={`text-xs px-2 py-1 rounded-full border font-semibold ${rank.color}`}>
-                            {rank.label}
-                          </span>
                         </div>
                         <p className="text-accent text-sm font-medium">{member.title}</p>
                         <p className="text-xs text-muted-foreground mt-1">
